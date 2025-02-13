@@ -15,7 +15,7 @@ setup(
         'cffi==1.17.1',
         'charset-normalizer==3.4.1',
         'colorama==0.4.6',
-        'discord==2.3.2'
+        'discord==2.3.2',
         'discord.py==2.4.0',
         'distro==1.9.0',
         'frozenlist==1.5.0',
