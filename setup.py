@@ -39,7 +39,8 @@ setup(
         'urllib3==2.3.0',
         'yarl==1.18.3',
         'youtube-dl==2021.12.17',
-        'yt-dlp==2025.1.26'
+        'yt-dlp==2025.1.26',
+        'gTTS~=2.5.4'
     ],
     author='Diogo Correia',
     author_email='diogo.f.correia@protonmail.com',
