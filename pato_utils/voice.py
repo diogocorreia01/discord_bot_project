@@ -15,15 +15,15 @@ class VoiceManager:
                 await channel.connect()
             elif voice_client.channel != channel:
                 await voice_client.move_to(channel)
-            await ctx.send(f"🔊 Conectado ao canal: {channel.name}")
+            await ctx.send(f"🔊 Connected to channel: {channel.name}")
         else:
-            await ctx.send("❌ Você precisa estar num canal de voz para me chamar!")
+            await ctx.send("❌ You need to be in a voice channel to summon me!")
 
     async def leave_voice_channel(self, ctx):
         """Faz o bot sair do canal de voz."""
         voice_client = ctx.guild.voice_client
         if voice_client:
             await voice_client.disconnect()
-            await ctx.send("👋 Desconectado do canal de voz!")
+            await ctx.send("👋 Disconnected from the voice channel!")
         else:
-            await ctx.send("❌ Não estou em nenhum canal de voz.")
+            await ctx.send("❌ I am not in any voice channel.")
