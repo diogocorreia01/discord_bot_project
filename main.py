@@ -7,11 +7,15 @@ from gtts import gTTS
 import os
 from pato_utils.voice import VoiceManager
 from pato_utils.trivia import TriviaGame
+from pato_utils.music import Music
+from pato_utils.memes import MemeFetcher
 
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
 voice_manager = VoiceManager(bot)
 trivia_game = TriviaGame(bot)
+music_player = Music(bot)
+meme_fetcher = MemeFetcher()
 
 @bot.event
 async def on_ready():
@@ -33,10 +37,8 @@ async def leave(ctx):
 
 @bot.command()
 async def meme(ctx):
-    response = requests.get(constants.MEME_API)
-    memes = response.json()['data']['memes']
-    meme = random.choice(memes)
-    await ctx.send(f"Meme: {meme['name']}\nURL: {meme['url']}")
+    """Calls the meme fetcher to retrieve and send a meme."""
+    await meme_fetcher.get_meme(ctx)
 
 @bot.command()
 async def speak(ctx, *, texto: str):
@@ -84,5 +86,25 @@ async def answer(ctx, *, player_answer: str):
 async def stop_trivia(ctx):
     """Stops the current trivia game manually."""
     await trivia_game.stop_game(ctx)
+
+@bot.command()
+async def play(ctx, url):
+    """Plays music from a YouTube URL."""
+    await music_player.play_music(ctx, url)
+
+@bot.command()
+async def stop(ctx):
+    """Stops the currently playing music."""
+    await music_player.stop_music(ctx)
+
+@bot.command()
+async def pause(ctx):
+    """Pauses the currently playing music."""
+    await music_player.pause_music(ctx)
+
+@bot.command()
+async def resume(ctx):
+    """Resumes paused music."""
+    await music_player.resume_music(ctx)
 
 bot.run(constants.DISCORD_KEY)
