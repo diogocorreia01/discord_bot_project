@@ -1,6 +1,6 @@
 # 🦆 Pato Bot
 
-Pato Bot is a versatile Discord bot that provides multiple functionalities, including trivia games, music playback, memes, and voice channel management. Built using **Discord.py**, this bot enhances your Discord server experience with fun and interactive commands.
+Pato Bot is a versatile Discord bot that provides multiple functionalities, including trivia games, music playback, memes, AI-powered responses, and voice channel management. Built using **Discord.py**, this bot enhances your Discord server experience with fun and interactive commands.
 
 ---
 
@@ -28,7 +28,12 @@ Pato Bot is a versatile Discord bot that provides multiple functionalities, incl
 - Join and leave voice channels
 - Speak text messages in multiple languages using TTS
 
-### 📜 Custom Help Command
+### 🤖 AI Assistant
+
+- Ask AI-powered questions with `!ask <question>`
+- Provides intelligent responses using a language model
+
+### 🌟 Custom Help Command
 
 - Provides an organized list of available commands
 
@@ -76,20 +81,21 @@ python main.py
 
 ---
 
-## 📜 Commands
+## 📝 Commands
 
-| Command                    | Description             |
-|----------------------------|-------------------------|
-| `!commands`                | Show available commands |
-| `!start_trivia easy/hard`  | Start a trivia game     |
-| `!answer <text>`           | Answer in the game      |
-| `!stop_trivia`             | End a trivia game       |
-| `!meme`                    | Get a random meme       |
-| `!music play <URL>`        | Play music from YouTube |
-| `!stop`                    | Stop music              |
-| `!join`                    | Join voice channel      |
-| `!leave`                   | Leave voice channel     |
-| `!speak <language> <text>` | Convert text to speech  |
+| Command                     | Description               |
+|-----------------------------|---------------------------|
+| `!commands`                 | Show available commands   |
+| `!start_trivia easy/hard`   | Start a trivia game       |
+| `!answer <text>`            | Answer in the game        |
+| `!stop_trivia`              | End a trivia game         |
+| `!meme`                     | Get a random meme         |
+| `!music play <URL>`         | Play music from YouTube   |
+| `!stop`                     | Stop music                |
+| `!join`                     | Join voice channel        |
+| `!leave`                    | Leave voice channel       |
+| `!speak <language> <text>`  | Convert text to speech    |
+| `!ask <question>`           | Ask AI-powered question   |
 
 ---
 
@@ -102,8 +108,9 @@ python main.py
 
 ---
 
-## 📄 License
+## 📝 License
 
 This project is licensed under the **MIT License**.
 
 ---
+

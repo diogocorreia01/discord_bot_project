@@ -52,8 +52,17 @@ class HelpCommand:
         )
 
         embed.add_field(
+            name="🤖 AI Commands",
+            value="`!ask <question>` - Ask something to the AI model.",
+            inline=False
+        )
+
+        embed.add_field(
             name="ℹ️ General",
-            value="`!commands` - Show this help menu.",
+            value=(
+                "`!ping` - Check if the bot is online.\n"
+                "`!commands` - Show this help menu."
+            ),
             inline=False
         )
 

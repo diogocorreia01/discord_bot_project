@@ -6,6 +6,7 @@ from pato_utils.trivia import TriviaGame
 from pato_utils.music import Music
 from pato_utils.memes import MemeFetcher
 from pato_utils.helpers import HelpCommand
+from pato_utils.ai import AIModel
 
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
@@ -14,6 +15,7 @@ trivia_game = TriviaGame(bot)
 music_player = Music(bot)
 meme_fetcher = MemeFetcher()
 help_command = HelpCommand(bot)
+ai_model = AIModel(model_name="Phi-3-mini-4k-instruct.Q4_0.gguf", device='cpu')
 
 @bot.event
 async def on_ready():
@@ -82,5 +84,22 @@ async def pause(ctx):
 async def resume(ctx):
     """Resumes paused music."""
     await music_player.resume_music(ctx)
+
+@bot.command()
+async def ask(ctx, *, question):
+    """Command to ask something to the AI model."""
+    try:
+        # Generate the model's response (using the AIModel class method)
+        response = ai_model.generate_response(question)
+
+        # Check if the response is not empty before sending
+        if response:
+            await ctx.send(response)
+        else:
+            await ctx.send("Sorry, I couldn't generate a response. Please try again later.")
+
+    except Exception as e:
+        # If an error occurs, send an error message
+        await ctx.send(f"An error occurred while trying to generate the response: {str(e)}")
 
 bot.run(constants.DISCORD_KEY)

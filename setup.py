@@ -7,7 +7,7 @@ setup(
     install_requires=[
         'aiofiles==24.1.0',
         'aiohappyeyeballs==2.4.6',
-        'aiohttp==3.11.12',
+        'aiohttp==3.11.13',
         'aiosignal==1.3.2',
         'aiosqlite==0.17.0',
         'annotated-types==0.7.0',
@@ -21,9 +21,10 @@ setup(
         'click==8.1.8',
         'colorama==0.4.6',
         'discord==2.3.2',
-        'discord.py==2.4.0',
+        'discord.py==2.5.0',
         'distro==1.9.0',
         'frozenlist==1.5.0',
+        'gpt4all==2.8.2',
         'gTTS==2.5.4',
         'h11==0.14.0',
         'httpcore==1.0.7',
@@ -33,7 +34,7 @@ setup(
         'multidict==6.1.0',
         'praw==7.8.1',
         'prawcore==2.4.0',
-        'propcache==0.2.1',
+        'propcache==0.3.0',
         'pycparser==2.22',
         'pydantic==2.10.6',
         'pydantic_core==2.27.2',
@@ -48,7 +49,7 @@ setup(
         'websocket-client==1.8.0',
         'yarl==1.18.3',
         'youtube-dl==2021.12.17',
-        'yt-dlp==2025.1.26'
+        'yt-dlp==2025.2.19'
     ],
     author='Diogo Correia',
     author_email='diogo.f.correia@protonmail.com',
