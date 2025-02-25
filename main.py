@@ -5,6 +5,7 @@ from pato_utils.voice import VoiceManager
 from pato_utils.trivia import TriviaGame
 from pato_utils.music import Music
 from pato_utils.memes import MemeFetcher
+from pato_utils.helpers import HelpCommand
 
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
@@ -12,6 +13,7 @@ voice_manager = VoiceManager(bot)
 trivia_game = TriviaGame(bot)
 music_player = Music(bot)
 meme_fetcher = MemeFetcher()
+help_command = HelpCommand(bot)
 
 @bot.event
 async def on_ready():
@@ -20,6 +22,11 @@ async def on_ready():
 @bot.command()
 async def ping(ctx):
     await ctx.send('Pong!')
+
+@bot.command(name="commands")
+async def show_commands(ctx):
+    """Displays the bot's help menu."""
+    await help_command.show_help(ctx)
 
 @bot.command()
 async def join(ctx):
