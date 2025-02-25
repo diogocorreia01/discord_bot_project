@@ -1,10 +1,6 @@
 import discord
 from discord.ext import commands
-import random
 from pato_utils import constants
-import requests
-from gtts import gTTS
-import os
 from pato_utils.voice import VoiceManager
 from pato_utils.trivia import TriviaGame
 from pato_utils.music import Music
@@ -41,36 +37,9 @@ async def meme(ctx):
     await meme_fetcher.get_meme(ctx)
 
 @bot.command()
-async def speak(ctx, *, texto: str):
-    # Verificar se o utilizador está num canal de voz
-    if ctx.author.voice:
-        # Obtem o canal de voz do utilizador
-        channel = ctx.author.voice.channel
-        voice_client = ctx.guild.voice_client
-
-        # Se o bot já tiver conectado, usa a conexão existente
-        if not voice_client:
-            voice_client = await channel.connect()
-        elif voice_client.channel != channel:
-            await voice_client.move_to(channel)
-
-        # Gera o áudio com o Google TTS
-        tts = gTTS(text=texto, lang='pt-pt')
-        tts.save("text.mp3")
-
-        # Reproduz o áudio no canal de voz
-        ffmpeg_path = constants.FFMPEG_PATH
-        voice_client.play(discord.FFmpegPCMAudio("text.mp3", executable=ffmpeg_path))
-
-        # Aguarda a reprodução terminar
-        while voice_client.is_playing():
-            await discord.utils.sleep_until(discord.utils.utcnow())
-
-        # Remove o ficheiro de áudio após reprodução
-        os.remove("text.mp3")
-
-    else:
-        await ctx.send("Tens de estar num canal de voz para eu falar!")
+async def speak(ctx, lang, *, text):
+    """Bot speaks the given text in the specified language."""
+    await voice_manager.speak(ctx, text, lang)
 
 @bot.command()
 async def start_trivia(ctx, difficulty: str):

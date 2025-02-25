@@ -1,6 +1,6 @@
 import random
 from discord.ext import commands, tasks
-import constants
+from pato_utils import constants
 
 class TriviaGame:
     def __init__(self, bot: commands.Bot):

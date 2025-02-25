@@ -1,6 +1,6 @@
 import random
 import praw
-import constants
+from pato_utils import constants
 
 class MemeFetcher:
     def __init__(self):
