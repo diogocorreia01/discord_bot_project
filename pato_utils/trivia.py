@@ -63,7 +63,7 @@ class TriviaGame:
             self.players[player] += 1
             await ctx.send(f"✅ {player}, your answer is correct! You earned 1 point.")
         else:
-            await ctx.send(f"❌ {ctx.author.name}, your answer is incorrect.")
+            await ctx.send(f"❌ {ctx.author.name}, your answer is incorrect. The correct answer was **{self.current_answer}**.")
 
         # Move to the next question
         self.current_question_index += 1

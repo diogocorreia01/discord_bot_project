@@ -38,9 +38,9 @@ class HelpCommand:
         embed.add_field(
             name="🧠 Trivia Commands",
             value=(
-                "`!trivia <easy/hard>` - Start a trivia game.\n"
+                "`!start_trivia <easy/hard>` - Start a trivia game.\n"
                 "`!answer <your answer>` - Submit an answer to the trivia question.\n"
-                "`!stoptrivia` - Stop the trivia game."
+                "`!stop_trivia` - Stop the trivia game."
             ),
             inline=False
         )
@@ -53,7 +53,7 @@ class HelpCommand:
 
         embed.add_field(
             name="ℹ️ General",
-            value="`!help` - Show this help menu.",
+            value="`!commands` - Show this help menu.",
             inline=False
         )
 
