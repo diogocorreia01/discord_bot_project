@@ -89,7 +89,6 @@ python main.py
 
 | Command                     | Description                        |
 |-----------------------------|------------------------------------|
-| `!help`                     | Show available commands           |
 | `!commands`                 | Display help menu                 |
 | `!ping`                     | Check bot response time           |
 | `!trivia easy/hard`         | Start a trivia game               |
