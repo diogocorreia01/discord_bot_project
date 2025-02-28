@@ -7,6 +7,7 @@ from pato_utils.music import Music
 from pato_utils.memes import MemeFetcher
 from pato_utils.helpers import HelpCommand
 from pato_utils.ai import AIModel
+from pato_utils.utils import Utils
 
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
@@ -15,7 +16,8 @@ trivia_game = TriviaGame(bot)
 music_player = Music(bot)
 meme_fetcher = MemeFetcher()
 help_command = HelpCommand(bot)
-ai_model = AIModel(model_name="Phi-3-mini-4k-instruct.Q4_0.gguf", device='cpu')
+ai_model = AIModel(model_name="phi4")
+utils_manager = Utils(bot, constants.NEWS_API_KEY, constants.WEATHER_API_KEY, constants.CHANNEL_ID)
 
 @bot.event
 async def on_ready():
@@ -87,7 +89,7 @@ async def resume(ctx):
 
 @bot.command()
 async def ask(ctx, *, question):
-    """Command to ask something to the AI model."""
+    """Command to ask something to the AI model. (beta)"""
     try:
         # Generate the model's response (using the AIModel class method)
         response = ai_model.generate_response(question)
@@ -101,5 +103,11 @@ async def ask(ctx, *, question):
     except Exception as e:
         # If an error occurs, send an error message
         await ctx.send(f"An error occurred while trying to generate the response: {str(e)}")
+
+@bot.command()
+async def weather(ctx, *, city: str):
+    """Fetches the weather for a given city"""
+    weather_info = utils_manager.fetch_weather(city)
+    await ctx.send(weather_info)
 
 bot.run(constants.DISCORD_KEY)
