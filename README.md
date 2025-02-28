@@ -1,6 +1,6 @@
 # 🦆 Pato Bot
 
-Pato Bot is a versatile Discord bot that provides multiple functionalities, including trivia games, music playback, memes, AI-powered responses, and voice channel management. Built using **Discord.py**, this bot enhances your Discord server experience with fun and interactive commands.
+Pato Bot is a versatile Discord bot that provides multiple functionalities, including trivia games, music playback, memes, voice channel management, AI interactions, and utility commands. Built using **Discord.py**, this bot enhances your Discord server experience with fun and interactive commands.
 
 ---
 
@@ -28,12 +28,16 @@ Pato Bot is a versatile Discord bot that provides multiple functionalities, incl
 - Join and leave voice channels
 - Speak text messages in multiple languages using TTS
 
-### 🤖 AI Assistant
+### 🤖 AI Model Interaction
 
-- Ask AI-powered questions with `!ask <question>`
-- Provides intelligent responses using a language model
+- Ask questions to an AI model and get responses
+- Uses a local LLM model for fast and intelligent replies
 
-### 🌟 Custom Help Command
+### ☁️ Weather Fetcher
+
+- Get real-time weather information for any city
+
+### 📚 Help Command
 
 - Provides an organized list of available commands
 
@@ -45,7 +49,7 @@ Pato Bot is a versatile Discord bot that provides multiple functionalities, incl
 
 Ensure you have the following installed:
 
-- Python 3.13+
+- Python 3.12+
 - FFmpeg
 - Required Python libraries
 
@@ -81,21 +85,26 @@ python main.py
 
 ---
 
-## 📝 Commands
+## 📄 Commands
 
-| Command                     | Description               |
-|-----------------------------|---------------------------|
-| `!commands`                 | Show available commands   |
-| `!start_trivia easy/hard`   | Start a trivia game       |
-| `!answer <text>`            | Answer in the game        |
-| `!stop_trivia`              | End a trivia game         |
-| `!meme`                     | Get a random meme         |
-| `!music play <URL>`         | Play music from YouTube   |
-| `!stop`                     | Stop music                |
-| `!join`                     | Join voice channel        |
-| `!leave`                    | Leave voice channel       |
-| `!speak <language> <text>`  | Convert text to speech    |
-| `!ask <question>`           | Ask AI-powered question   |
+| Command                     | Description                        |
+|-----------------------------|------------------------------------|
+| `!help`                     | Show available commands           |
+| `!commands`                 | Display help menu                 |
+| `!ping`                     | Check bot response time           |
+| `!trivia easy/hard`         | Start a trivia game               |
+| `!answer <your answer>`      | Answer a trivia question          |
+| `!stop_trivia`              | Stop the current trivia game      |
+| `!meme`                     | Get a random meme                 |
+| `!music play <URL>`         | Play music from YouTube           |
+| `!stop`                     | Stop music                        |
+| `!pause`                    | Pause the current song            |
+| `!resume`                   | Resume paused music               |
+| `!join`                     | Join voice channel                |
+| `!leave`                    | Leave voice channel               |
+| `!speak <language> <text>`  | Convert text to speech            |
+| `!ask <question>`           | Ask a question to the AI model    |
+| `!weather <city>`           | Get weather information           |
 
 ---
 
@@ -113,4 +122,3 @@ python main.py
 This project is licensed under the **MIT License**.
 
 ---
-
