@@ -28,7 +28,7 @@ Pato Bot is a versatile Discord bot that provides multiple functionalities, incl
 - Join and leave voice channels
 - Speak text messages in multiple languages using TTS
 
-### 🤖 AI Model Interaction
+### 🤖 AI Model Interaction ***(beta)***
 
 - Ask questions to an AI model and get responses
 - Uses a local LLM model for fast and intelligent replies
