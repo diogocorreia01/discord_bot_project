@@ -1,9 +1,22 @@
-version: '3'
+version: '3.8'
+
 services:
-  app:
+  pato-bot:
+    container_name: pato-bot
     build: .
-    ports:
-      - "5000:5000"
+    restart: always
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - REDDIT_CLIENT_ID=${REDDIT_CLIENT_ID}
+      - REDDIT_CLIENT_SECRET=${REDDIT_CLIENT_SECRET}
+      - REDDIT_USER_AGENT=${REDDIT_USER_AGENT}
     volumes:
-      - .:/app
+      - ./data:/app/data
+    depends_on:
+      - ffmpeg
+    command: ["python", "main.py"]
+
+  ffmpeg:
+    image: jrottenberg/ffmpeg:latest
+    container_name: ffmpeg
     restart: always
