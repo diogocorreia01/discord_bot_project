@@ -49,7 +49,8 @@ setup(
         'websocket-client==1.8.0',
         'yarl==1.18.3',
         'youtube-dl==2021.12.17',
-        'yt-dlp==2025.2.19'
+        'yt-dlp==2025.2.19',
+        'ollama==0.4.7'
     ],
     author='Diogo Correia',
     author_email='diogo.f.correia@protonmail.com',
