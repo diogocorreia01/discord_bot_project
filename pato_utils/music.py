@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import youtube_dl
+import yt_dlp as youtube_dl
 
 class Music(commands.Cog):
     def __init__(self, bot):
@@ -38,11 +38,19 @@ class Music(commands.Cog):
                 'preferredcodec': 'mp3',
                 'preferredquality': '192',
             }],
+            'socket_timeout': 60,
+            'quiet': True,
+            'noplaylist': True,
+            'nocheckcertificate': True,
         }
 
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(url, download=False)
-            url2 = info['url']
+        try:
+            with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+                info = ydl.extract_info(url, download=False)
+                url2 = info['url']
+        except Exception as e:
+            await ctx.send(f"❌ An error occurred: {str(e)}")
+            return
 
         voice_client = ctx.voice_client
         if voice_client.is_playing():
