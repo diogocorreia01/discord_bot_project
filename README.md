@@ -6,7 +6,7 @@ Pato Bot is a versatile Discord bot that provides multiple functionalities, incl
 
 ## 🚀 Features
 
-### 🎮 Trivia Game
+### 🧠 Trivia Game
 
 - Play trivia with easy or hard questions
 - Randomized questions from a predefined database
@@ -37,6 +37,12 @@ Pato Bot is a versatile Discord bot that provides multiple functionalities, incl
 
 - Get real-time weather information for any city
 
+### 🎮 League of Legends
+
+- Retrieves summoner details
+- Shows the last 10 match history
+- Retrieves details about a specific champion
+
 ### 📚 Help Command
 
 - Provides an organized list of available commands
@@ -52,6 +58,7 @@ Ensure you have the following installed:
 - Python 3.12+
 - FFmpeg
 - Required Python libraries
+- Ollama
 
 ### 2️⃣ Clone the Repository
 
@@ -87,23 +94,27 @@ python main.py
 
 ## 📄 Commands
 
-| Command                     | Description                        |
-|-----------------------------|------------------------------------|
-| `!commands`                 | Display help menu                 |
-| `!ping`                     | Check bot response time           |
-| `!trivia easy/hard`         | Start a trivia game               |
-| `!answer <your answer>`      | Answer a trivia question          |
-| `!stop_trivia`              | Stop the current trivia game      |
-| `!meme`                     | Get a random meme                 |
-| `!music play <URL>`         | Play music from YouTube           |
-| `!stop`                     | Stop music                        |
-| `!pause`                    | Pause the current song            |
-| `!resume`                   | Resume paused music               |
-| `!join`                     | Join voice channel                |
-| `!leave`                    | Leave voice channel               |
-| `!speak <language> <text>`  | Convert text to speech            |
-| `!ask <question>`           | Ask a question to the AI model    |
-| `!weather <city>`           | Get weather information           |
+| Command                            | Description                       |
+|------------------------------------|-----------------------------------|
+| `!commands`                        | Display help menu                 |
+| `!ping`                            | Check bot response time           |
+| `!trivia easy/hard`                | Start a trivia game               |
+| `!answer <your answer>`            | Answer a trivia question          |
+| `!stop_trivia`                     | Stop the current trivia game      |
+| `!meme`                            | Get a random meme                 |
+| `!music play <URL>`                | Play music from YouTube           |
+| `!stop`                            | Stop music                        |
+| `!pause`                           | Pause the current song            |
+| `!resume`                          | Resume paused music               |
+| `!join`                            | Join voice channel                |
+| `!leave`                           | Leave voice channel               |
+| `!speak <language> <text>`         | Convert text to speech            |
+| `!ask <question>`                  | Ask a question to the AI model    |
+| `!weather <city>`                  | Get weather information           |
+| `!pato_status`                     | Displays the server status        |
+| `!summoner_info <game_name> <tag>` | Retrieves summoner details        |
+| `!match_history <game_name> <tag>` | Shows the last 10 match history   |
+| `!champion_info <champion>`        | Retrieves details about a specific champion  |
 
 ---
 
