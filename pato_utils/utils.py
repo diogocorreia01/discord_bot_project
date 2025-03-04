@@ -1,5 +1,9 @@
 import requests
 from discord.ext import tasks
+import discord
+import psutil
+import platform
+import time
 
 class Utils:
     def __init__(self, bot, news_api_key, weather_api_key, channel_id):
@@ -7,6 +11,7 @@ class Utils:
         self.news_api_key = news_api_key
         self.weather_api_key = weather_api_key
         self.channel_id = channel_id
+        self.start_time = time.time()
 
 
     def get_coordinates(self, city, country=None):
@@ -75,3 +80,29 @@ class Utils:
         channel = self.bot.get_channel(self.channel_id)
         if channel:
             await channel.send(weather)
+
+    async def get_status(self, ctx):
+        """Returns system status including CPU, RAM usage, and uptime"""
+
+        # CPU and RAM usage
+        cpu_usage = psutil.cpu_percent(interval=1)
+        ram_usage = psutil.virtual_memory().percent
+
+        # Uptime
+        uptime_seconds = int(time.time() - self.start_time)
+        uptime = time.strftime("%H:%M:%S", time.gmtime(uptime_seconds))
+
+        # OS Info
+        system_info = f"{platform.system()} {platform.release()}"
+
+        # Create Embed Message
+        embed = discord.Embed(
+            title="📊 System Status",
+            color=discord.Color.blue()
+        )
+        embed.add_field(name="🖥️ OS", value=system_info, inline=True)
+        embed.add_field(name="💾 CPU Usage", value=f"{cpu_usage}%", inline=True)
+        embed.add_field(name="📈 RAM Usage", value=f"{ram_usage}%", inline=True)
+        embed.add_field(name="⏳ Uptime", value=uptime, inline=False)
+
+        await ctx.send(embed=embed)
