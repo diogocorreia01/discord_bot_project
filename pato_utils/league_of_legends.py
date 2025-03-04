@@ -1,5 +1,4 @@
 import requests
-import logging
 
 class RiotAPI:
     def __init__(self, api_key):
@@ -137,7 +136,7 @@ class RiotAPI:
         }
 
     def get_champion_data(self, version="12.23.1"):
-        """Fetch champion data (abilities, lore, skins, etc.) from Data Dragon"""
+        #Fetch champion data (abilities, lore, skins, etc.) from Data Dragon
         url = f"{self.ddragon_url}/{version}/data/en_US/champion.json"
         response = requests.get(url)
 
@@ -147,7 +146,7 @@ class RiotAPI:
             return {"error": f"Failed to fetch champion data: {response.status_code}"}
 
     def get_champion_info(self, champion_name, version="12.23.1"):
-        """Get full champion information: lore, image, tags, partype, stats, abilities, and skins"""
+        #Get full champion information: lore, image, tags, partype, stats, abilities, and skins
         champion_data = self.get_champion_data(version)
         if "error" in champion_data:
             return champion_data

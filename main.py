@@ -323,4 +323,10 @@ async def champion_info(ctx, champion_name: str):
     # Send the embed to Discord
     await ctx.send(embed=embed)
 
+
+@bot.command()
+async def pato_status(ctx):
+    """Fetches the system status using Utils"""
+    await utils_manager.get_status(ctx)
+
 bot.run(constants.DISCORD_KEY)
