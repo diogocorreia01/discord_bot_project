@@ -20,7 +20,6 @@ class HelpCommand:
                 "`!pause` - Pause the current music.\n"
                 "`!resume` - Resume the paused music.\n"
                 "`!stop` - Stop the music.\n"
-                "`!leave` - Make the bot leave the voice channel."
             ),
             inline=False
         )
@@ -54,6 +53,24 @@ class HelpCommand:
         embed.add_field(
             name="🤖 AI Commands",
             value="`!ask <question>` - Ask something to the AI model.",
+            inline=False
+        )
+
+        # 🌦️ Utility Commands
+        embed.add_field(
+            name="🌦️ Utilities",
+            value="`!weather <city>` - Get weather info\n"
+                  "`!pato_status` - Show server status",
+            inline=False
+        )
+
+        # 🎮 League of Legends Commands
+        embed.add_field(
+            name="🎮 League of Legends",
+            value="`!champion_rotation` - Free champion rotation\n"
+                  "`!summoner_info <game_name> <tag>` - Summoner details\n"
+                  "`!match_history <game_name> <tag>` - Last 10 matches\n"
+                  "`!champion_info <champion>` - Champion details",
             inline=False
         )
 
