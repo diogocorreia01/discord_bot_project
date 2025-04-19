@@ -17,7 +17,7 @@ trivia_game = TriviaGame(bot)
 music_player = Music(bot)
 meme_fetcher = MemeFetcher()
 help_command = HelpCommand(bot)
-ai_model = AIModel(model_name="phi4")
+ai_model = AIModel(model_name="gemma:2b")
 utils_manager = Utils(bot, constants.NEWS_API_KEY, constants.WEATHER_API_KEY, constants.CHANNEL_ID)
 riot_api = RiotAPI(api_key=constants.RIOT_API_KEY)
 
@@ -322,6 +322,17 @@ async def champion_info(ctx, champion_name: str):
 
     # Send the embed to Discord
     await ctx.send(embed=embed)
+
+@bot.command()
+async def generate_image(ctx, *, prompt):
+    """Gera uma imagem baseada num prompt com IA"""
+    await ctx.send("🎨 A gerar imagem...")
+
+    image_path = ai_model.generate_image(prompt)
+    if image_path:
+        await ctx.send(file=discord.File(image_path))
+    else:
+        await ctx.send("❌ Falhou ao gerar imagem. Tenta com outro prompt.")
 
 
 @bot.command()

@@ -1,13 +1,20 @@
 import logging
 import ollama
+import os
+import subprocess
+from diffusers import StableDiffusionPipeline
+import torch
+from PIL import Image
 
 # Ativar o logging
 logging.basicConfig(level=logging.DEBUG)
 
 class AIModel:
-    def __init__(self, model_name="mistral"):
+    def __init__(self, model_name="gemma:2b"):
         self.model_name = model_name
         logging.info(f"Model {model_name} is ready to use with Ollama.")
+        self.sd_pipe = None
+        self.base_url = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 
     def generate_response(self, prompt):
         try:
@@ -34,3 +41,23 @@ class AIModel:
         except Exception as e:
             logging.error(f"Unexpected error while generating response: {str(e)}")
             return f"An unexpected error occurred: {str(e)}"
+
+    def generate_image(self, prompt, output_path="generated_image.png"):
+        try:
+            if self.sd_pipe is None:
+                logging.info("Loading Stable Diffusion pipeline...")
+                self.sd_pipe = StableDiffusionPipeline.from_pretrained(
+                    "runwayml/stable-diffusion-v1-5",
+                    torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32
+                )
+                if torch.cuda.is_available():
+                    self.sd_pipe = self.sd_pipe.to("cuda")
+
+            logging.debug(f"Generating image with prompt: {prompt}")
+            image = self.sd_pipe(prompt).images[0]
+            image.save(output_path)
+            logging.info(f"Image saved to {output_path}")
+            return output_path
+        except Exception as e:
+            logging.error(f"Failed to generate image: {str(e)}")
+            return f"Error generating image: {str(e)}"

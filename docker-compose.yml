@@ -1,22 +1,22 @@
-version: '3.8'
-
+version: '3.9'
 services:
-  pato-bot:
-    container_name: pato-bot
-    build: .
-    restart: always
-    environment:
-      - DISCORD_TOKEN=${DISCORD_TOKEN}
-      - REDDIT_CLIENT_ID=${REDDIT_CLIENT_ID}
-      - REDDIT_CLIENT_SECRET=${REDDIT_CLIENT_SECRET}
-      - REDDIT_USER_AGENT=${REDDIT_USER_AGENT}
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
     volumes:
-      - ./data:/app/data
-    depends_on:
-      - ffmpeg
-    command: ["python", "main.py"]
-
-  ffmpeg:
-    image: jrottenberg/ffmpeg:latest
-    container_name: ffmpeg
+      - ollama_data:/root/.ollama
     restart: always
+
+  bot:
+    image: pato_bot_discord
+    container_name: pato-bot
+    depends_on:
+      - ollama
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    restart: always
+
+volumes:
+  ollama_data:
